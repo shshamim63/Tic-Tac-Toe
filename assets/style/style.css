@@ -3,18 +3,15 @@ body, html {
 }
 
 .bg {
-  /* The image used */
-  background-image: url("../images/tictactoe.jpg");
-  /* Full height */
+  background-image: url("../images/background.jpg");
   height: 100%;
-  /* Center and scale the image nicely */
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
 }
 
 td {
-  border: 2px solid #333;
+  border: 4px solid #333;
   height: 100px;
   width: 100px;
   text-align: center;
@@ -44,19 +41,15 @@ table tr td:last-child {
   border-right: 0;
 }
 
-.endgame {
-  display: none;
-  width: 200px;
-  top: 120px;
-  background-color: rgba(205, 133, 63, 0.8);
-  position: absolute;
-  left: 50%;
-  margin-left: -100px;
-  padding-top: 50px;
-  padding-bottom: 50px;
-  text-align: center;
-  border-radius: 5px;
-  color: white;
-  font-size: 2em;
+.player-image {
+  height: 20px;
+}
+
+.bg-red {
+  background-image: url("../images/Cuphead_red.jpg");
+  height: 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 /*# sourceMappingURL=style.css.map */
