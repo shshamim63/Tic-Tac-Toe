@@ -21,43 +21,47 @@ const createTable = () => {
           <hr>`;
 }
 
-const createUserInfo = () => {
-  return `<div class="card-body">
+const createUserInfo = (playerXName, playerOName) => {
+  return  `<div class="card-body">
             <div class="row">
               <div class="col">
                 <div class="border border-danger player-0-panel">
-                  <div class="player-name-1" id="name-0"></div>
+                  <div class="player-name" id="name-0">${playerXName}</div>
                 </div>
               </div>
               <div class="col">
-                <h2 class="status">Player1</h2>
+                <h2 class="status"></h2>
+                <button type="button" class="btn btn-primary btn-sm" onclick="reset(playerXName, playerOName)">
+                  Reset
+                </button>
+                <button type="button" class="btn btn-primary btn-sm mt-1" onclick="initialTemplate()">
+                  New Game
+                </button>
               </div>
-              <div class="col bg-blue">
-                <div class="border border-info player-1-panel">
-                  <div class="player-name-2" id="name-1">Player 2</div>
+              <div class="col">
+                <div class="border player-1-panel">
+                  <div class="player-name" id="name-1">${playerOName}</div>
                 </div>
               </div>
             </div>
-            <button type="button" class="btn btn-primary">
-              reset
-            </button>
           </div>`
 }
-const start = () => {
-  const player1Name = document.querySelector("#exampleInputName1").value;
-  const player2Name = document.querySelector("#exampleInputName2").value;
-  let initialTable = createTable();
-  let userInfo = createUserInfo();
+
+const reset = (player1Name, player2Name) => {
+  let tableContent = document.querySelector("table");
+  let cardContent = document.querySelector(".card-body");
+  initialTarget.removeChild(tableContent,cardContent);
+  initialTarget.innerHTML = createTable() + createUserInfo(player1Name, player2Name);
+}
+
+const play = (player1Name, player2Name) => {
   let initialView = document.querySelector(".initial-view");
   initialTarget.removeChild(initialView);
-  initialTarget.appendChild(initialTable + userInfo);
-  document.querySelector(".player-name-1").innerText = player1Name;
-  document.querySelector(".player-name-2").innerText = player2Name;
-  document.querySelector(".status").innerText = "";
+  initialTarget.innerHTML = createTable() + createUserInfo(player1Name, player2Name);
 }
 
 const initialTemplate = () => {
-  let firstLook =`<div class="initial-view">
+  let firstLook = `<div class="initial-view">
                     <img src="./assets/images/innertictactoe.jpg" class="card-img-top" alt="...">
                     <div class="card-body">
                       <h5 class="card-title">Welcome</h5>
@@ -91,8 +95,13 @@ const initialTemplate = () => {
                     </div>
                   </div>`
 
-  initialTarget.appendChild(firstLook);
+  initialTarget.innerHTML = firstLook ;
   let playButton = document.querySelector("#play");
-  playButton.addEventListener("click",start);
+  playButton.addEventListener("click", () => {
+    let player1Name = document.querySelector("#exampleInputName1").value;
+    let player2Name = document.querySelector("#exampleInputName2").value;
+    play(player1Name, player2Name);
+  });
 }
 
+initialTemplate();
