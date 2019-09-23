@@ -1,3 +1,6 @@
+import Player from './components/player.js';
+
+
 const initialTarget = document.querySelector(".card");
 
 const createTable = () => {
