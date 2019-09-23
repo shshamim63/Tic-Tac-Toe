@@ -1,5 +1,5 @@
-const displayController = (() => {
-  
+const Display = (() => {
+
   const createTable = () => {
     return `<table class="m-3">
               <tr>
@@ -20,7 +20,7 @@ const displayController = (() => {
             </table>
             <hr>`;
   }
-  
+
   const createUserInfo = (playerXName, playerOName) => {
     return  `<div class="card-body">
               <div class="row">
@@ -104,15 +104,15 @@ const displayController = (() => {
       play(player1Name, player2Name);
     });
   }
-  
 
-    
+
+
   return {
-    returnBoard,
-    cellIsFilled,
-    setCell,
-    boardIsFull,
-    resetBoard,
+    createTable,
+    createUserInfo,
+    reset,
+    play,
+    initialTemplate,
   };
 })();
-export default displayController;
+export default Display;
