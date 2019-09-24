@@ -1,7 +1,8 @@
-import display from './components/display.js';
-import board from './components/board.js';
-import Player from './components/player.js';
+import display from '../components/display.js';
+import board from '../components/board.js';
+import Player from '../components/player.js';
 const game = (() => {
+  const initialTarget = document.querySelector(".card");
   let turn = 0;
   let playerXName;
   let playerOName;
@@ -22,7 +23,7 @@ const game = (() => {
   }
 
   const addPlayEvent = (firstLook) => {
-    initialTarget.innerHTML = firstLook ;
+    initialTarget.innerHTML = firstLook;
     let playButton = document.querySelector("#play");
     playButton.addEventListener("click", () => {
       playerXName = document.querySelector("#exampleInputName1").value;
@@ -43,6 +44,9 @@ const game = (() => {
     while(winner([firstPlayer, secondPlayer]) || board.boardIsFull()){
       turn
     }
+  }
+  return {
+    gameStart,
   }
 })();
 export default game;

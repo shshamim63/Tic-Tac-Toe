@@ -1,7 +1,5 @@
 const display = (() => {
 
-  const initialTarget = document.querySelector(".card");
-
   const createTable = () => {
     return `<table class="m-3">
               <tr>

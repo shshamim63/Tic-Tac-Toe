@@ -28,3 +28,4 @@ const play = (player1Name, player2Name) => {
   return [player1Name, player2Name];
 }
 
+start();
