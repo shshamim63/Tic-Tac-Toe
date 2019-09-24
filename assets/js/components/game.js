@@ -22,21 +22,53 @@ const game = (() => {
     return false;
   }
 
+  const fillCell = (element) => {
+    if(turn === 0){
+      if(!board.cellIsFilled(element)){
+        document.getElementById(element).innerText = "X";
+        board.setCell(element,"X");  
+        turn = 1;
+      }
+    }
+    else if(turn === 1){
+      if(!board.cellIsFilled(element)){
+        document.getElementById(element).innerText = "O";  
+        board.setCell(element,"O");
+        turn = 0;
+      }
+    }
+  }
+
+  const showGrid = () => {
+    let initialView = document.querySelector(".initial-view");
+    initialTarget.removeChild(initialView);
+    initialTarget.innerHTML = display.createTable() + display.createUserInfo(playerXName, playerOName);
+    let cells = document.querySelectorAll(".cell");
+    for(let i = 0; i < cells.length; i++){
+      cells[i].addEventListener("click", ()=>{
+        console.log(i);
+        fillCell(i);
+      });
+    }
+  }
+
   const addPlayEvent = (firstLook) => {
     initialTarget.innerHTML = firstLook;
     let playButton = document.querySelector("#play");
     playButton.addEventListener("click", () => {
       playerXName = document.querySelector("#exampleInputName1").value;
       playerOName = document.querySelector("#exampleInputName2").value;
+      showGrid();
     });
+  }
+
+  const loadGame = () => {
+    const players = [Player(playerXName, "X"), Player(playerOName, "O")];
   }
 
   const render = () => {
     let firstLook = display.initialTemplate();
     addPlayEvent(firstLook);
-  }
-  const gameStart = () => {
-    render();
   }
   const Start = (player1, player2) => {
     const firstPlayer = Player(player1, "X");
@@ -44,6 +76,11 @@ const game = (() => {
     while(winner([firstPlayer, secondPlayer]) || board.boardIsFull()){
       turn
     }
+  }
+
+  const gameStart = () => {
+    render();
+    loadGame();
   }
   return {
     gameStart,
