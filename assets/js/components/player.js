@@ -1,5 +1,4 @@
 const Player = (name, playerSymbol) => {
-  let playerMove = []
-  return {name, playerSymbol, playerMove};
+  return {name, playerSymbol};
 }
 export default Player;
