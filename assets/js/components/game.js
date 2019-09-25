@@ -10,21 +10,36 @@ const game = (() => {
   let playerOName;
   let players;
   let result;
-  const winCombination = [[1, 2, 3], [4, 5, 6], [7, 8, 9],
-    [1, 4, 7], [2, 5, 8], [3, 6, 9],
-    [1, 5, 9], [3, 5, 7]];
-  const winner = (participant) => {
+  const winCombination = [[0, 1, 2], [3, 4, 5], [6, 7, 8],
+    [0, 3, 6], [1, 4, 7], [2, 5, 8],
+    [0, 4, 8], [2, 4, 6]];
+  const winner = () => {
     // let firstPlayerMove = board.returnBoard; closed in here
-    for (let k = 0; k < participant.length; k += 1) {
+    for (let k = 0; k < players.length; k += 1) {
       for (let m = 0; m < winCombination.length; m += 1) {
-        if (players[k] && winCombination[m]) {
-          return true;
+        if ((players[k].playersMove && winCombination[m]) === winCombination[m]) {
+          console.log('I am from winner');
+          return players[k];
         }
       }
     }
     return false;
   };
+  const declareResult = () => {
+    if (winner()) {
+      const winPlayer = winner();
+      document.querySelector('.status').innerText = winPlayer.name;
+    } else if (board.boardIsFull()) {
+      document.querySelector('.status').innerText = 'It is a Draw';
+    }
+  };
 
+  const checkResult = () => {
+    if (winner() || board.boardIsFull()) {
+      result = true;
+      declareResult();
+    }
+  };
   const fillCell = (element) => {
     if (!result) {
       if (turn === 0) {
@@ -34,7 +49,6 @@ const game = (() => {
           document.querySelector('.player-1-panel').classList.add('border-danger');
           board.setCell(element, 'X');
           players[0].playersMove.push(element);
-          console.log(players[0].playersMove);
           turn = 1;
         }
       } else if (turn === 1) {
@@ -44,11 +58,11 @@ const game = (() => {
           document.querySelector('.player-0-panel').classList.add('border-danger');
           board.setCell(element, 'O');
           players[1].playersMove.push(element);
-          console.log(players[1].playersMove);
           turn = 0;
         }
       }
     }
+    checkResult();
   };
   const showGrid = () => {
     const initialView = document.querySelector('.initial-view');

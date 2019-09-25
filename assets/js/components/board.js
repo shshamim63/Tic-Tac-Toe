@@ -8,6 +8,7 @@ const board = (() => {
   const boardIsFull = () => {
     for (let i = 0; i < grid.length; i++) {
       if (grid[i] === null) {
+        console.log('i am here');
         return false;
       }
     }
