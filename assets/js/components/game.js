@@ -9,6 +9,7 @@ const game = (() => {
   let playerXName;
   let playerOName;
   let players;
+  let result;
   const winCombination = [[1, 2, 3], [4, 5, 6], [7, 8, 9],
     [1, 4, 7], [2, 5, 8], [3, 6, 9],
     [1, 5, 9], [3, 5, 7]];
@@ -25,23 +26,27 @@ const game = (() => {
   };
 
   const fillCell = (element) => {
-    if (turn === 0) {
-      if (board.cellIsFilled(element)) {
-        document.getElementById(element).innerText = 'X';
-        document.querySelector('.player-0-panel').classList.remove('border-danger');
-        document.querySelector('.player-1-panel').classList.add('border-danger');
-        board.setCell(element, 'X');
-        console.log(board.grid);
-        turn = 1;
-      }
-    } else if (turn === 1) {
-      if (board.cellIsFilled(element)) {
-        document.getElementById(element).innerText = 'O';
-        document.querySelector('.player-1-panel').classList.remove('border-danger');
-        document.querySelector('.player-0-panel').classList.add('border-danger');
-        board.setCell(element, 'O');
-        console.log(board.grid);
-        turn = 0;
+    if (!result) {
+      if (turn === 0) {
+        if (board.cellIsFilled(element)) {
+          document.getElementById(element).innerText = 'X';
+          document.querySelector('.player-0-panel').classList.remove('border-danger');
+          document.querySelector('.player-1-panel').classList.add('border-danger');
+          board.setCell(element, 'X');
+          players[0].playersMove.push(element);
+          console.log(players[0].playersMove);
+          turn = 1;
+        }
+      } else if (turn === 1) {
+        if (board.cellIsFilled(element)) {
+          document.getElementById(element).innerText = 'O';
+          document.querySelector('.player-1-panel').classList.remove('border-danger');
+          document.querySelector('.player-0-panel').classList.add('border-danger');
+          board.setCell(element, 'O');
+          players[1].playersMove.push(element);
+          console.log(players[1].playersMove);
+          turn = 0;
+        }
       }
     }
   };
@@ -77,6 +82,7 @@ const game = (() => {
   const gameStart = () => {
     render();
     loadGame();
+    result = false;
   };
   return {
     gameStart,
