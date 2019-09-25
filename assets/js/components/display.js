@@ -1,5 +1,5 @@
 const display = (() => {
-
+  // eslint-disable-next-line arrow-body-style
   const createTable = () => {
     return `<table class="m-3">
               <tr>
@@ -19,10 +19,11 @@ const display = (() => {
               </tr>
             </table>
             <hr>`;
-  }
+  };
 
+  // eslint-disable-next-line arrow-body-style
   const createUserInfo = (playerXName, playerOName) => {
-    return  `<div class="card-body">
+    return `<div class="card-body">
               <div class="row">
                 <div class="col">
                   <div class="border border-danger player-0-panel">
@@ -44,11 +45,12 @@ const display = (() => {
                   </div>
                 </div>
               </div>
-            </div>`
-  }
+            </div>`;
+  };
 
+  // eslint-disable-next-line arrow-body-style
   const initialTemplate = () => {
-    return  `<div class="initial-view">
+    return `<div class="initial-view">
               <img src="./assets/images/innertictactoe.jpg" class="card-img-top" alt="...">
               <div class="card-body">
                 <h5 class="card-title">Welcome</h5>
@@ -80,8 +82,8 @@ const display = (() => {
                   </div>
                 </div>
               </div>
-            </div>`
-  }
+            </div>`;
+  };
 
 
   return {

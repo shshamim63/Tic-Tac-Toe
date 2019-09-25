@@ -1,27 +1,30 @@
+/* eslint-disable no-plusplus */
 const board = (() => {
-  let grid = Array(9).fill(null);
-  const returnBoard = () => { grid };
-  const setCell = (index, symbol) => grid[index] = symbol;
-  const checkString = (element) => {
-    return typeof(element) === String;
-  }
+  let grid = [0, 1, 2, 3, 4, 5, 6, 7, 8];
+  const returnGrid = () => grid;
+  const setCell = (index, symbol) => {
+    grid[index] = symbol;
+  };
   const boardIsFull = () => {
-    grid.every(checkString);
-  }
-  const cellIsFilled = (index) => {
-    grid[index] === String;
-  }
-  
-  const resetBoard = () => {
-    grid = Array(9).fill(null);
+    for (let i = 0; i < grid.length; i++) {
+      if (grid[i] === null) {
+        return false;
+      }
+    }
+    return true;
+  };
+  const cellIsFilled = (index) => grid[index] != null;
+  const resetGrid = () => {
+    grid = [0, 1, 2, 3, 4, 5, 6, 7, 8];
   };
 
   return {
-    returnBoard,
+    grid,
+    returnGrid,
     cellIsFilled,
     setCell,
     boardIsFull,
-    resetBoard,
+    resetGrid,
   };
 })();
 export default board;
