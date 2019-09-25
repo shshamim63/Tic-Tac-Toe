@@ -1,6 +1,6 @@
 /* eslint-disable no-plusplus */
 const board = (() => {
-  let grid = [0, 1, 2, 3, 4, 5, 6, 7, 8];
+  let grid = Array(9).fill(null);
   const returnGrid = () => grid;
   const setCell = (index, symbol) => {
     grid[index] = symbol;
@@ -13,9 +13,9 @@ const board = (() => {
     }
     return true;
   };
-  const cellIsFilled = (index) => grid[index] != null;
+  const cellIsFilled = (index) => grid[index] === null;
   const resetGrid = () => {
-    grid = [0, 1, 2, 3, 4, 5, 6, 7, 8];
+    grid = Array(9).fill(null);
   };
 
   return {

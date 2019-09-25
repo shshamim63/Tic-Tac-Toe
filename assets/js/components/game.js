@@ -28,6 +28,8 @@ const game = (() => {
     if (turn === 0) {
       if (board.cellIsFilled(element)) {
         document.getElementById(element).innerText = 'X';
+        document.querySelector('.player-0-panel').classList.remove('border-danger');
+        document.querySelector('.player-1-panel').classList.add('border-danger');
         board.setCell(element, 'X');
         console.log(board.grid);
         turn = 1;
@@ -35,6 +37,8 @@ const game = (() => {
     } else if (turn === 1) {
       if (board.cellIsFilled(element)) {
         document.getElementById(element).innerText = 'O';
+        document.querySelector('.player-1-panel').classList.remove('border-danger');
+        document.querySelector('.player-0-panel').classList.add('border-danger');
         board.setCell(element, 'O');
         console.log(board.grid);
         turn = 0;
