@@ -13,11 +13,14 @@ const game = (() => {
   const winCombination = [[0, 1, 2], [3, 4, 5], [6, 7, 8],
     [0, 3, 6], [1, 4, 7], [2, 5, 8],
     [0, 4, 8], [2, 4, 6]];
+
+  const isEqual = (arr, target) => target.every((v) => arr.includes(v));
   const winner = () => {
     // let firstPlayerMove = board.returnBoard; closed in here
     for (let k = 0; k < players.length; k += 1) {
       for (let m = 0; m < winCombination.length; m += 1) {
-        if ((players[k].playersMove && winCombination[m]) === winCombination[m]) {
+        console.log(isEqual(players[k].playersMove, winCombination[m]));
+        if (isEqual(players[k].playersMove, winCombination[m])) {
           console.log('I am from winner');
           return players[k];
         }
@@ -27,8 +30,7 @@ const game = (() => {
   };
   const declareResult = () => {
     if (winner()) {
-      const winPlayer = winner();
-      document.querySelector('.status').innerText = winPlayer.name;
+      document.querySelector('.status').innerText = winner().name;
     } else if (board.boardIsFull()) {
       document.querySelector('.status').innerText = 'It is a Draw';
     }
@@ -64,6 +66,9 @@ const game = (() => {
     }
     checkResult();
   };
+  const loadGame = () => {
+    players = [Player(playerXName, 'X'), Player(playerOName, 'O')];
+  };
   const showGrid = () => {
     const initialView = document.querySelector('.initial-view');
     initialTarget.removeChild(initialView);
@@ -75,8 +80,8 @@ const game = (() => {
         fillCell(i);
       });
     }
+    loadGame();
   };
-
   const addPlayEvent = (firstLook) => {
     initialTarget.innerHTML = firstLook;
     const playButton = document.querySelector('#play');
@@ -85,9 +90,7 @@ const game = (() => {
       playerOName = document.querySelector('#exampleInputName2').value;
       showGrid();
     });
-  };
-  const loadGame = () => {
-    players = [Player(playerXName, 'X'), Player(playerOName, 'O')];
+    console.log(playerXName);
   };
   const render = () => {
     const firstLook = display.initialTemplate();
@@ -95,7 +98,6 @@ const game = (() => {
   };
   const gameStart = () => {
     render();
-    loadGame();
     result = false;
   };
   return {

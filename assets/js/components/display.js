@@ -32,10 +32,10 @@ const display = (() => {
                 </div>
                 <div class="col">
                   <h2 class="status"></h2>
-                  <button type="button" class="btn btn-primary btn-sm" onclick="reset(playerXName, playerOName)">
+                  <button type="button" class="btn btn-primary btn-sm">
                     Reset
                   </button>
-                  <button type="button" class="btn btn-primary btn-sm mt-1" onclick="initialTemplate()">
+                  <button type="button" class="btn btn-primary btn-sm mt-1">
                     New Game
                   </button>
                 </div>
