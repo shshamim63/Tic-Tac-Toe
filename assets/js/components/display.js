@@ -32,10 +32,10 @@ const display = (() => {
                 </div>
                 <div class="col">
                   <h2 class="status"></h2>
-                  <button type="button" class="btn btn-primary btn-sm">
+                  <button type="button" class="btn btn-primary btn-sm reset">
                     Reset
                   </button>
-                  <button type="button" class="btn btn-primary btn-sm mt-1">
+                  <button type="button" class="btn btn-primary btn-sm mt-1 new-game">
                     New Game
                   </button>
                 </div>

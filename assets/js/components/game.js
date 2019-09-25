@@ -35,7 +35,6 @@ const game = (() => {
       document.querySelector('.status').innerText = 'It is a Draw';
     }
   };
-
   const checkResult = () => {
     if (winner() || board.boardIsFull()) {
       result = true;
@@ -70,16 +69,26 @@ const game = (() => {
     players = [Player(playerXName, 'X'), Player(playerOName, 'O')];
   };
   const showGrid = () => {
-    const initialView = document.querySelector('.initial-view');
-    initialTarget.removeChild(initialView);
     initialTarget.innerHTML = display.createTable()
                               + display.createUserInfo(playerXName, playerOName);
+    // eslint-disable-next-line no-use-before-define
+    document.querySelector('.reset').addEventListener('click', reset);
+    // eslint-disable-next-line no-use-before-define
+    document.querySelector('.new-game').addEventListener('click', newGame);
     const cells = document.querySelectorAll('.cell');
     for (let i = 0; i < cells.length; i += 1) {
       cells[i].addEventListener('click', () => {
         fillCell(i);
       });
     }
+  };
+  const showGameBoard = () => {
+    const initialView = document.querySelector('.initial-view');
+    initialTarget.removeChild(initialView);
+    showGrid();
+  };
+  const setGameView = () => {
+    showGameBoard();
     loadGame();
   };
   const addPlayEvent = (firstLook) => {
@@ -88,9 +97,8 @@ const game = (() => {
     playButton.addEventListener('click', () => {
       playerXName = document.querySelector('#exampleInputName1').value;
       playerOName = document.querySelector('#exampleInputName2').value;
-      showGrid();
+      setGameView();
     });
-    console.log(playerXName);
   };
   const render = () => {
     const firstLook = display.initialTemplate();
@@ -98,7 +106,28 @@ const game = (() => {
   };
   const gameStart = () => {
     render();
+    board.resetGrid();
     result = false;
+  };
+  const deleteGameInfo = () => {
+    const deletegrid = document.querySelector('table');
+    const deletebody = document.querySelector('.card-body');
+    initialTarget.removeChild(deletegrid);
+    initialTarget.removeChild(deletebody);
+  };
+  const reset = () => {
+    for (let i = 0; i < players.length; i += 1) {
+      players[i].playersMove = [];
+    }
+    deleteGameInfo();
+    showGrid();
+    board.resetGrid();
+    result = false;
+    turn = 0;
+  };
+  const newGame = () => {
+    deleteGameInfo();
+    gameStart();
   };
   return {
     gameStart,

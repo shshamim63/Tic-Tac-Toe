@@ -1,6 +1,6 @@
 /* eslint-disable no-plusplus */
 const board = (() => {
-  let grid = Array(9).fill(null);
+  let grid;
   const returnGrid = () => grid;
   const setCell = (index, symbol) => {
     grid[index] = symbol;
