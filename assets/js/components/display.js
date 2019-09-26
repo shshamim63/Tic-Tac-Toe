@@ -1,31 +1,8 @@
-/* eslint-disable arrow-body-style */
 const display = (() => {
-  // eslint-disable-next-line arrow-body-style
   const createTable = () => {
-    return `<div class="status text-center">
-              <h2 class="result bg-warning"></h2>
-            </div>
-            <table class="m-3">
-              <tr>
-                <td class="cell" id="0"></td>
-                <td class="cell" id="1"></td>
-                <td class="cell" id="2"></td>
-              </tr>
-              <tr>
-                <td class="cell" id="3"></td>
-                <td class="cell" id="4"></td>
-                <td class="cell" id="5"></td>
-              </tr>
-              <tr>
-                <td class="cell" id="6"></td>
-                <td class="cell" id="7"></td>
-                <td class="cell" id="8"></td>
-              </tr>
-            </table>
-            <hr>`;
+    document.querySelector('.initial-view').style.display = 'none';
+    document.querySelector('.table-content').style.display = 'block';
   };
-
-  // eslint-disable-next-line arrow-body-style
   const createUserInfo = (playerXName, playerOName) => {
     return `<div class="card-body">
               <div class="row">
