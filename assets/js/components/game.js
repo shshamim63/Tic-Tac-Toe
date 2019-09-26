@@ -29,10 +29,11 @@ const game = (() => {
     return false;
   };
   const declareResult = () => {
+    document.querySelector('.status').style.display = 'block';
     if (winner()) {
-      document.querySelector('.status').innerText = winner().name;
+      document.querySelector('.result').innerText = `Winner is: ${winner().name}`;
     } else if (board.boardIsFull()) {
-      document.querySelector('.status').innerText = 'It is a Draw';
+      document.querySelector('.result').innerText = 'It is a Draw';
     }
   };
   const checkResult = () => {

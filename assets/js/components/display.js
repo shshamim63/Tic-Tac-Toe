@@ -1,7 +1,11 @@
+/* eslint-disable arrow-body-style */
 const display = (() => {
   // eslint-disable-next-line arrow-body-style
   const createTable = () => {
-    return `<table class="m-3">
+    return `<div class="status text-center">
+              <h2 class="result bg-warning"></h2>
+            </div>
+            <table class="m-3">
               <tr>
                 <td class="cell" id="0"></td>
                 <td class="cell" id="1"></td>
@@ -31,7 +35,6 @@ const display = (() => {
                   </div>
                 </div>
                 <div class="col">
-                  <h2 class="status"></h2>
                   <button type="button" class="btn btn-primary btn-sm reset">
                     Reset
                   </button>
