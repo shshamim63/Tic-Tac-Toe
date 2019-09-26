@@ -1,4 +1,3 @@
-/* eslint-disable no-plusplus */
 const board = (() => {
   let grid;
   const returnGrid = () => grid;
@@ -6,9 +5,8 @@ const board = (() => {
     grid[index] = symbol;
   };
   const boardIsFull = () => {
-    for (let i = 0; i < grid.length; i++) {
+    for (let i = 0; i < grid.length; i += 1) {
       if (grid[i] === null) {
-        console.log('i am here');
         return false;
       }
     }

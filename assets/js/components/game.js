@@ -1,4 +1,3 @@
-/* eslint-disable import/extensions */
 import display from './display.js';
 import board from './board.js';
 import Player from './player.js';
@@ -16,12 +15,9 @@ const game = (() => {
 
   const isEqual = (arr, target) => target.every((v) => arr.includes(v));
   const winner = () => {
-    // let firstPlayerMove = board.returnBoard; closed in here
     for (let k = 0; k < players.length; k += 1) {
       for (let m = 0; m < winCombination.length; m += 1) {
-        console.log(isEqual(players[k].playersMove, winCombination[m]));
         if (isEqual(players[k].playersMove, winCombination[m])) {
-          console.log('I am from winner');
           return players[k];
         }
       }
@@ -72,9 +68,7 @@ const game = (() => {
   const showGrid = () => {
     initialTarget.innerHTML = display.createTable()
                               + display.createUserInfo(playerXName, playerOName);
-    // eslint-disable-next-line no-use-before-define
     document.querySelector('.reset').addEventListener('click', reset);
-    // eslint-disable-next-line no-use-before-define
     document.querySelector('.new-game').addEventListener('click', newGame);
     const cells = document.querySelectorAll('.cell');
     for (let i = 0; i < cells.length; i += 1) {
