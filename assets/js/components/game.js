@@ -66,8 +66,8 @@ const game = (() => {
     players = [Player(playerXName, 'X'), Player(playerOName, 'O')];
   };
   const showGrid = () => {
-    initialTarget.innerHTML = display.createTable()
-                              + display.createUserInfo(playerXName, playerOName);
+    display.createTable();
+    display.createUserInfo(playerXName, playerOName);
     document.querySelector('.reset').addEventListener('click', reset);
     document.querySelector('.new-game').addEventListener('click', newGame);
     const cells = document.querySelectorAll('.cell');
@@ -78,16 +78,13 @@ const game = (() => {
     }
   };
   const showGameBoard = () => {
-    const initialView = document.querySelector('.initial-view');
-    initialTarget.removeChild(initialView);
     showGrid();
   };
   const setGameView = () => {
     showGameBoard();
     loadGame();
   };
-  const addPlayEvent = (firstLook) => {
-    initialTarget.innerHTML = firstLook;
+  const addPlayEvent = () => {
     const playButton = document.querySelector('#play');
     playButton.addEventListener('click', () => {
       playerXName = document.querySelector('#exampleInputName1').value;
@@ -96,8 +93,8 @@ const game = (() => {
     });
   };
   const render = () => {
-    const firstLook = display.initialTemplate();
-    addPlayEvent(firstLook);
+    display.initialTemplate();
+    addPlayEvent();
   };
   const gameStart = () => {
     render();
