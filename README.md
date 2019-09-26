@@ -4,7 +4,8 @@
 
 > This is a web-based game.
 
-A web-based game where two player can take turn to fill the board to get the winning combination that it in a row or in a column or diagonal.
+It's the classic game for two player were you take turn to fill the board trying
+to get the winning combination that It's in a row a column or diagonal.
 
 ## Table of Contents
 
@@ -15,7 +16,12 @@ A web-based game where two player can take turn to fill the board to get the win
 - [License](#license)
 
 ## Background
-We used javascript and object-oriented methodologies to complete the project. The game is played between two players with the option reset and new game.
+
+We used JavaScript and object-oriented methodologies to complete the project.
+You also can see the use of basic HTML and SCSS to complete the visual part of
+the interface.
+
+## Screenshots ![Screenshot](./assets/images/ssgame.png)
 
 
 ## Usage
