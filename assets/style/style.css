@@ -21,6 +21,10 @@ td {
   cursor: pointer;
 }
 
+.display-none {
+  display: none;
+}
+
 table {
   border-collapse: collapse;
 }

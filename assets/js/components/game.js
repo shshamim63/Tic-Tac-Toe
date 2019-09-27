@@ -1,9 +1,9 @@
 import display from './display.js';
 import board from './board.js';
 import Player from './player.js';
+import domManager from './domManager.js';
 
 const game = (() => {
-  const initialTarget = document.querySelector('.card');
   let turn = 0;
   let playerXName;
   let playerOName;
@@ -25,11 +25,11 @@ const game = (() => {
     return false;
   };
   const declareResult = () => {
-    document.querySelector('.status').style.display = 'block';
+    domManager.enableResultView();
     if (winner()) {
-      document.querySelector('.result').innerText = `Winner is: ${winner().name}`;
+      domManager.declareWinner(winner().name);
     } else if (board.boardIsFull()) {
-      document.querySelector('.result').innerText = 'It is a Draw';
+      domManager.declareDraw();
     }
   };
   const checkResult = () => {
@@ -42,18 +42,14 @@ const game = (() => {
     if (!result) {
       if (turn === 0) {
         if (board.cellIsFilled(element)) {
-          document.getElementById(element).innerText = 'X';
-          document.querySelector('.player-0-panel').classList.remove('border-danger');
-          document.querySelector('.player-1-panel').classList.add('border-danger');
+          domManager.fillMove(element, 'X', 0, 1);
           board.setCell(element, 'X');
           players[0].playersMove.push(element);
           turn = 1;
         }
       } else if (turn === 1) {
         if (board.cellIsFilled(element)) {
-          document.getElementById(element).innerText = 'O';
-          document.querySelector('.player-1-panel').classList.remove('border-danger');
-          document.querySelector('.player-0-panel').classList.add('border-danger');
+          domManager.fillMove(element, 'O', 1, 0);
           board.setCell(element, 'O');
           players[1].playersMove.push(element);
           turn = 0;
@@ -71,6 +67,7 @@ const game = (() => {
     document.querySelector('.reset').addEventListener('click', reset);
     document.querySelector('.new-game').addEventListener('click', newGame);
     const cells = document.querySelectorAll('.cell');
+    domManager.clearTable(cells);
     for (let i = 0; i < cells.length; i += 1) {
       cells[i].addEventListener('click', () => {
         fillCell(i);
@@ -85,10 +82,10 @@ const game = (() => {
     loadGame();
   };
   const addPlayEvent = () => {
-    const playButton = document.querySelector('#play');
+    const playButton = domManager.domPlayButton();
     playButton.addEventListener('click', () => {
-      playerXName = document.querySelector('#exampleInputName1').value;
-      playerOName = document.querySelector('#exampleInputName2').value;
+      playerXName = domManager.getFirstName();
+      playerOName = domManager.getSecondName();
       setGameView();
     });
   };
@@ -102,10 +99,9 @@ const game = (() => {
     result = false;
   };
   const deleteGameInfo = () => {
-    const deletegrid = document.querySelector('table');
-    const deletebody = document.querySelector('.card-body');
-    initialTarget.removeChild(deletegrid);
-    initialTarget.removeChild(deletebody);
+    turn = 0;
+    domManager.disableResult();
+    display.initialTemplate();
   };
   const reset = () => {
     for (let i = 0; i < players.length; i += 1) {
@@ -115,7 +111,6 @@ const game = (() => {
     showGrid();
     board.resetGrid();
     result = false;
-    turn = 0;
   };
   const newGame = () => {
     deleteGameInfo();

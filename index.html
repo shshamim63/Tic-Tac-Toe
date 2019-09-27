@@ -16,7 +16,7 @@
             <div class="col-md-8 offset-md-2 mt-4">
               <div class="card text-center">
                 <!-- initial view -->
-                <div class="initial-view display-none">
+                <div id="initial-view" class="initial display-none">
                   <img src="./assets/images/innertictactoe.jpg" class="card-img-top" alt="...">
                   <div class="card-body">
                     <h5 class="card-title">Welcome</h5>
@@ -48,33 +48,33 @@
                       </div>
                     </div>
                   </div>
-                  <!-- initial view end-->
                 </div>
+                <!-- initial view end-->
                 <!-- table content -->
                 <div class="status text-center">
-                    <h2 class="result bg-warning"></h2>
-                  </div>
-                  <table class="m-3 display-none">
-                    <tr>
-                      <td class="cell" id="0"></td>
-                      <td class="cell" id="1"></td>
-                      <td class="cell" id="2"></td>
-                    </tr>
-                    <tr>
-                      <td class="cell" id="3"></td>
-                      <td class="cell" id="4"></td>
-                      <td class="cell" id="5"></td>
-                    </tr>
-                    <tr>
-                      <td class="cell" id="6"></td>
-                      <td class="cell" id="7"></td>
-                      <td class="cell" id="8"></td>
-                    </tr>
-                  </table>
-                  <hr>
-                  <!-- table content end-->
+                  <h2 class="result bg-warning"></h2>
+                </div>
+                <table id="table-content" class="m-3">
+                  <tr>
+                    <td class="cell" id="0"></td>
+                    <td class="cell" id="1"></td>
+                    <td class="cell" id="2"></td>
+                  </tr>
+                  <tr>
+                    <td class="cell" id="3"></td>
+                    <td class="cell" id="4"></td>
+                    <td class="cell" id="5"></td>
+                  </tr>
+                  <tr>
+                    <td class="cell" id="6"></td>
+                    <td class="cell" id="7"></td>
+                    <td class="cell" id="8"></td>
+                  </tr>
+                </table>
+                <hr>
+                <!-- table content end-->
                 <!-- user info -->
-                <div class="card-body display-none user-button">
+                <div id="user-info" class="card-body user-button">
                   <div class="row">
                     <div class="col">
                       <div class="border border-danger player-0-panel">
@@ -96,6 +96,7 @@
                     </div>
                   </div>
                 </div>
+                <!-- User info end-->
               </div>
             </div>
           </div>

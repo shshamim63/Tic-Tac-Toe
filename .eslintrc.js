@@ -16,5 +16,7 @@ module.exports = {
   rules: {
     'import/extensions': 0,
     'arrow-parens': 0,
+    'no-param-reassign': 0,
+    'no-use-before-define': 0,
   },
 };
