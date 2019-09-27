@@ -1,3 +1,6 @@
+import game from './game.js';
+import display from './display.js';
+
 const domManager = (() => {
   const domPlayButton = () => document.querySelector('#play');
   const getFirstName = () => document.querySelector('#exampleInputName1').value;
@@ -24,6 +27,27 @@ const domManager = (() => {
       element.innerText = '';
     });
   };
+  const showGrid = (playerXName, playerOName) => {
+    display.createTable();
+    display.createUserInfo(playerXName, playerOName);
+    document.querySelector('.reset').addEventListener('click', game.reset);
+    document.querySelector('.new-game').addEventListener('click', game.newGame);
+    const cells = document.querySelectorAll('.cell');
+    domManager.clearTable(cells);
+    for (let i = 0; i < cells.length; i += 1) {
+      cells[i].addEventListener('click', () => {
+        game.fillCell(i);
+      });
+    }
+  };
+  const addPlayEvent = () => {
+    const playButton = domManager.domPlayButton();
+    playButton.addEventListener('click', () => {
+      const playerXName = domManager.getFirstName();
+      const playerOName = domManager.getSecondName();
+      game.setGameView(playerXName, playerOName);
+    });
+  };
   return {
     domPlayButton,
     getFirstName,
@@ -34,6 +58,8 @@ const domManager = (() => {
     fillMove,
     clearTable,
     disableResult,
+    showGrid,
+    addPlayEvent,
   };
 })();
 export default domManager;

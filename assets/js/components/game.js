@@ -61,37 +61,18 @@ const game = (() => {
   const loadGame = () => {
     players = [Player(playerXName, 'X'), Player(playerOName, 'O')];
   };
-  const showGrid = () => {
-    display.createTable();
-    display.createUserInfo(playerXName, playerOName);
-    document.querySelector('.reset').addEventListener('click', reset);
-    document.querySelector('.new-game').addEventListener('click', newGame);
-    const cells = document.querySelectorAll('.cell');
-    domManager.clearTable(cells);
-    for (let i = 0; i < cells.length; i += 1) {
-      cells[i].addEventListener('click', () => {
-        fillCell(i);
-      });
-    }
-  };
   const showGameBoard = () => {
-    showGrid();
+    domManager.showGrid(playerXName, playerOName);
   };
-  const setGameView = () => {
+  const setGameView = (firstPlayerName, secondPlayerName) => {
+    playerXName = firstPlayerName;
+    playerOName = secondPlayerName;
     showGameBoard();
     loadGame();
   };
-  const addPlayEvent = () => {
-    const playButton = domManager.domPlayButton();
-    playButton.addEventListener('click', () => {
-      playerXName = domManager.getFirstName();
-      playerOName = domManager.getSecondName();
-      setGameView();
-    });
-  };
   const render = () => {
     display.initialTemplate();
-    addPlayEvent();
+    domManager.addPlayEvent();
   };
   const gameStart = () => {
     render();
@@ -108,7 +89,7 @@ const game = (() => {
       players[i].playersMove = [];
     }
     deleteGameInfo();
-    showGrid();
+    domManager.showGrid(playerXName, playerOName);
     board.resetGrid();
     result = false;
   };
@@ -118,6 +99,10 @@ const game = (() => {
   };
   return {
     gameStart,
+    fillCell,
+    reset,
+    newGame,
+    setGameView,
   };
 })();
 export default game;
