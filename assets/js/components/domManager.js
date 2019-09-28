@@ -40,12 +40,12 @@ const domManager = (() => {
       });
     }
   };
-  const addPlayEvent = () => {
+  const addPlayEvent = (setGameViewcd) => {
     const playButton = domManager.domPlayButton();
     playButton.addEventListener('click', () => {
       const playerXName = domManager.getFirstName();
       const playerOName = domManager.getSecondName();
-      game.setGameView(playerXName, playerOName);
+      setGameViewcd(playerXName, playerOName);
     });
   };
   return {

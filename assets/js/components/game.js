@@ -72,7 +72,7 @@ const game = (() => {
   };
   const render = () => {
     display.initialTemplate();
-    domManager.addPlayEvent();
+    domManager.addPlayEvent(setGameView);
   };
   const gameStart = () => {
     render();
@@ -102,7 +102,6 @@ const game = (() => {
     fillCell,
     reset,
     newGame,
-    setGameView,
   };
 })();
 export default game;
