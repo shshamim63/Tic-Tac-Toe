@@ -14,10 +14,10 @@ module.exports = {
     ecmaVersion: 2018,
   },
   rules: {
-    "import/extensions": "off",
-    "arrow-parens": "off",
-    "no-param-reassign": "off",
-    "no-use-before-define": "off",
-    "import/no-cycle": "off",
+    'import/extensions': 0,
+    'arrow-parens': 0,
+    'no-param-reassign': 0,
+    'no-use-before-define': 0,
+    'import/no-cycle': 0,
   },
 };
