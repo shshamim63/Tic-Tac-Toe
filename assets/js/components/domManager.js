@@ -27,16 +27,16 @@ const domManager = (() => {
       element.innerText = '';
     });
   };
-  const showGrid = (playerXName, playerOName) => {
+  const showGrid = (playerXName, playerOName, resetCb, newGameCb, fillCellCb) => {
     display.createTable();
     display.createUserInfo(playerXName, playerOName);
-    document.querySelector('.reset').addEventListener('click', game.reset);
-    document.querySelector('.new-game').addEventListener('click', game.newGame);
+    document.querySelector('.reset').addEventListener('click', resetCb);
+    document.querySelector('.new-game').addEventListener('click', newGameCb);
     const cells = document.querySelectorAll('.cell');
     domManager.clearTable(cells);
     for (let i = 0; i < cells.length; i += 1) {
       cells[i].addEventListener('click', () => {
-        game.fillCell(i);
+        fillCellCb(i);
       });
     }
   };

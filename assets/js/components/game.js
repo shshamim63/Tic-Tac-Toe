@@ -62,7 +62,7 @@ const game = (() => {
     players = [Player(playerXName, 'X'), Player(playerOName, 'O')];
   };
   const showGameBoard = () => {
-    domManager.showGrid(playerXName, playerOName);
+    domManager.showGrid(playerXName, playerOName, reset, newGame, fillCell);
   };
   const setGameView = (firstPlayerName, secondPlayerName) => {
     playerXName = firstPlayerName;
@@ -84,14 +84,17 @@ const game = (() => {
     domManager.disableResult();
     display.initialTemplate();
   };
+  const resethelper = () => {
+    deleteGameInfo();
+    showGameBoard();
+    board.resetGrid();
+    result = false;
+  };
   const reset = () => {
     for (let i = 0; i < players.length; i += 1) {
       players[i].playersMove = [];
     }
-    deleteGameInfo();
-    domManager.showGrid(playerXName, playerOName);
-    board.resetGrid();
-    result = false;
+    resethelper();
   };
   const newGame = () => {
     deleteGameInfo();
