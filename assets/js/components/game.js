@@ -102,9 +102,6 @@ const game = (() => {
   };
   return {
     gameStart,
-    fillCell,
-    reset,
-    newGame,
   };
 })();
 export default game;
