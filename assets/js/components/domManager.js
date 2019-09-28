@@ -1,4 +1,3 @@
-import game from './game.js';
 import display from './display.js';
 
 const domManager = (() => {
