@@ -1,0 +1,70 @@
+body, html {
+    height: 100%;
+}
+  
+.bg { 
+  background-image: url("../images/background.jpg");
+  height: 100%; 
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+td {
+	border:  4px solid #333;
+	height:  100px;
+	width:  100px;
+	text-align:  center;
+	vertical-align:  middle;
+	font-family:  "Comic Sans MS", cursive, sans-serif;
+	font-size:  55px;
+	cursor: pointer;
+}
+.display-none {
+	display: none;
+}
+table {
+	border-collapse: collapse;
+}
+
+table tr:first-child td {
+	border-top: 0;
+}
+
+table tr:last-child td {
+	border-bottom: 0;
+}
+
+table tr td:first-child {
+	border-left: 0;
+}
+
+table tr td:last-child {
+	border-right: 0;
+}
+
+.player-image {
+  height: 20px;
+}
+
+.bg-red {
+  background-image: url("../images/Cuphead_red.jpg");
+  height: 100%; 
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.status {
+	display: none;
+	position: absolute;
+	left: 50%;
+	height: 50px;
+	min-width: 150px;
+	margin-top: 150px;
+}
+.result {
+	position: relative;
+	left: -50%;
+	 border: dotted red 1px;
+}
