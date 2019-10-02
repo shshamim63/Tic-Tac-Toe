@@ -27,6 +27,7 @@ the interface.
 ## Usage
 
 ```
+run `npm install`
 run `npm start`
 ```
 
