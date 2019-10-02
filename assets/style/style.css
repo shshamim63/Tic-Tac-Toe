@@ -17,8 +17,12 @@ td {
   text-align: center;
   vertical-align: middle;
   font-family: "Comic Sans MS", cursive, sans-serif;
-  font-size: 70px;
+  font-size: 55px;
   cursor: pointer;
+}
+
+.display-none {
+  display: none;
 }
 
 table {
@@ -51,5 +55,20 @@ table tr td:last-child {
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
+}
+
+.status {
+  display: none;
+  position: absolute;
+  left: 50%;
+  height: 50px;
+  min-width: 150px;
+  margin-top: 150px;
+}
+
+.result {
+  position: relative;
+  left: -50%;
+  border: dotted red 1px;
 }
 /*# sourceMappingURL=style.css.map */

@@ -1,3 +1,7 @@
-import test from './board.js';
+import game from './components/game.js';
 
-test();
+const start = () => {
+  game.gameStart();
+};
+
+start();
