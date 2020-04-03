@@ -23,7 +23,9 @@ const domManager = (() => {
   };
   const clearTable = (cells) => {
     cells.forEach(element => {
+      console.log(element);
       element.innerText = '';
+      element.classList.remove('bg-winning');
     });
   };
   const showGrid = (playerXName, playerOName, resetCb, newGameCb, fillCellCb) => {
@@ -49,10 +51,8 @@ const domManager = (() => {
   };
   const markWinningGrid = (winCombination) => {
     const grids = document.querySelectorAll('.cell');
-    console.log(grids);
     grids.forEach(element => {
       if (winCombination.includes(parseInt(element.id))) {
-        console.log(element);
         element.classList.add('bg-winning');
       }       
     });
