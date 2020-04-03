@@ -52,7 +52,12 @@ table tr td:last-child {
 .player-image {
   height: 20px;
 }
-
+.player-name {
+  font-size: 25px;
+  font-weight: 900;
+  color: #4D4D4D;
+  font-family: fantasy;
+}
 .bg-red {
   background-image: url("../images/Cuphead_red.jpg");
   height: 100%;
