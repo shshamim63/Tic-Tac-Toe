@@ -18,7 +18,10 @@ const game = (() => {
     for (let k = 0; k < players.length; k += 1) {
       for (let m = 0; m < winCombination.length; m += 1) {
         if (isEqual(players[k].playersMove, winCombination[m])) {
-          return players[k];
+          return {
+            winner: players[k],
+            combination: winCombination[m]
+          };
         }
       }
     }
@@ -27,7 +30,8 @@ const game = (() => {
   const declareResult = () => {
     domManager.enableResultView();
     if (winner()) {
-      domManager.declareWinner(winner().name);
+      domManager.markWinningGrid(winner().combination);
+      domManager.declareWinner(winner().winner.name);
     } else if (board.boardIsFull()) {
       domManager.declareDraw();
     }

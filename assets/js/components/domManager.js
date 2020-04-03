@@ -47,6 +47,16 @@ const domManager = (() => {
       setGameViewcd(playerXName, playerOName);
     });
   };
+  const markWinningGrid = (winCombination) => {
+    const grids = document.querySelectorAll('.cell');
+    console.log(grids);
+    grids.forEach(element => {
+      if (winCombination.includes(parseInt(element.id))) {
+        console.log(element);
+        element.classList.add('bg-winning');
+      }       
+    });
+  };
   return {
     domPlayButton,
     getFirstName,
@@ -59,6 +69,7 @@ const domManager = (() => {
     disableResult,
     showGrid,
     addPlayEvent,
+    markWinningGrid,
   };
 })();
 export default domManager;

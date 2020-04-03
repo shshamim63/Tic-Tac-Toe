@@ -57,6 +57,12 @@ table tr td:last-child {
   background-size: cover;
 }
 
+.bg-winning {
+  background-color: #ee5757;
+  color: #f2f2f2;
+  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
+
 .status {
   display: none;
   position: absolute;
