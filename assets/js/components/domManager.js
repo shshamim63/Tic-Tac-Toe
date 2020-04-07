@@ -23,7 +23,6 @@ const domManager = (() => {
   };
   const clearTable = (cells) => {
     cells.forEach(element => {
-      console.log(element);
       element.innerText = '';
       element.classList.remove('bg-winning');
     });
