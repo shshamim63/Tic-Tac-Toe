@@ -14,9 +14,10 @@
 
 - [Background](#background)
 - [Prerequisites](#prerequisites)
-- [Built With](#built_with)
+- [Built With](#built-with)
 - [Install](#install)
 - [Maintainers](#maintainers)
+- [Potential Future Feature](#potential-future-feature)
 - [Contributing](#contributing)
 - [License](#license)
 
@@ -36,7 +37,7 @@ A web-based game that has been built by following the Object-Oriented Programmin
 ## Prerequisites
 - Device must have installed nodejs. You can install it from [here](https://nodejs.org/en/).
 
-## Built_With
+## Built With
 - Front-end - html5, CSS3
 - Backend - JavaScript
 
@@ -49,6 +50,11 @@ Open terminal and perform the operation sequentially.
 3. To install all the dependencies `npm install`
 4. To start the project `npm start` . which will start the live-server in your default browser.
 
+## Potential Future Feature
+
+- Improve the UI
+- Play with computer 
+- Add difficulty level while playing against computer.
 
 ## Maintainers
 
